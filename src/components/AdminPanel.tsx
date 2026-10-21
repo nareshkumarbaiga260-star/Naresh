@@ -27,6 +27,7 @@ import {
   BookOpen,
   X
 } from 'lucide-react';
+import { ForgotPasswordModal } from './ForgotPasswordModal';
 
 export const AdminPanel: React.FC = () => {
   const { 

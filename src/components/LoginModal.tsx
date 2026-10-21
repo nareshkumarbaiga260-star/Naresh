@@ -12,8 +12,10 @@ import {
   AlertCircle, 
   CheckCircle,
   LogOut,
-  ArrowRight
+  ArrowRight,
+  HelpCircle
 } from 'lucide-react';
+import { ForgotPasswordModal } from './ForgotPasswordModal';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -31,6 +33,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSucce
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
 
   if (!isOpen) return null;
 
@@ -192,11 +195,22 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSucce
                 </p>
               </div>
 
-              {/* Password Input */}
+              {/* Password Input with Forgot Password link */}
               <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                  सुरक्षित पासवर्ड (Admin Password)
-                </label>
+                <div className="flex items-center justify-between mb-1">
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+                    सुरक्षित पासवर्ड (Admin Password)
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => setIsForgotPasswordOpen(true)}
+                    className="text-xs text-amber-600 dark:text-amber-400 hover:underline flex items-center gap-1 font-medium"
+                  >
+                    <KeyRound className="w-3 h-3" />
+                    <span>पासवर्ड भूल गए? (Forgot?)</span>
+                  </button>
+                </div>
+
                 <div className="relative">
                   <KeyRound className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
                   <input
@@ -247,8 +261,13 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSucce
               </div>
             </form>
           )}
-        </div>
       </div>
+
+      {/* Secure Forgot Password / Password Reset Flow */}
+      <ForgotPasswordModal 
+        isOpen={isForgotPasswordOpen} 
+        onClose={() => setIsForgotPasswordOpen(false)} 
+      />
     </div>
   );
 };
