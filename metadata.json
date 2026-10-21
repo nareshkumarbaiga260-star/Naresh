@@ -1,0 +1,6 @@
+{
+  "name": "Naresh Technical",
+  "description": "सरकारी योजनाओं (Sarkari Yojana) और सरकारी भर्तियों (Sarkari Bharti) की विश्वसनीय, सरल हिंदी में स्वतंत्र जानकारी पोर्टल।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
